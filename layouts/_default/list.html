@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="max-w-4xl mx-auto px-6 py-12">
+    <h1 class="text-3xl font-extrabold tracking-tight capitalize mb-8 border-b border-slate-200 pb-4">
+        {{ .Title }} Archive
+    </h1>
+    
+    <!-- Grid List of Articles -->
+    <div class="space-y-8">
+        {{ range .Pages }}
+        <article class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+            <span class="text-xs text-slate-400 block mb-1">{{ .Date.Format "Jan 2, 2006" }}</span>
+            <h2 class="text-xl font-bold mb-2">
+                <a href="{{ .Permalink }}" class="text-slate-900 hover:text-indigo-600 transition">{{ .Title }}</a>
+            </h2>
+            <p class="text-slate-600 text-sm mb-4">{{ .Summary }}</p>
+            <a href="{{ .Permalink }}" class="text-sm font-semibold text-indigo-600 hover:underline">Read Article &rarr;</a>
+        </article>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
