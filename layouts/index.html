@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="min-h-[calc(100vh-61px)] flex flex-col md:flex-row">
+    
+    <!-- Left Column: Data Journalism Section -->
+    <div class="w-full md:w-1/2 bg-slate-900 text-white flex flex-col justify-center items-start p-12 lg:p-24 border-b md:border-b-0 md:border-r border-slate-800">
+        <span class="text-xs uppercase font-semibold tracking-widest text-emerald-400 mb-2">Computation & Research</span>
+        <h2 class="text-3xl lg:text-4xl font-black tracking-tight mb-4">Data & Investigative Journalism</h2>
+        <p class="text-slate-400 mb-8 max-w-md text-sm leading-relaxed">
+            Analyzing public databases, utilizing Python and SQL scripts, and parsing open records to uncover systemic public insights.
+        </p>
+        <a href="/reporting/" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-lg text-sm transition shadow-lg shadow-emerald-500/20">
+            View Investigations &rarr;
+        </a>
+    </div>
+
+    <!-- Right Column: Creative Writing Section -->
+    <div class="w-full md:w-1/2 bg-white flex flex-col justify-center items-start p-12 lg:p-24">
+        <span class="text-xs uppercase font-semibold tracking-widest text-indigo-600 mb-2">Narrative & Prose</span>
+        <h2 class="text-3xl lg:text-4xl font-serif font-bold tracking-tight text-slate-900 mb-4">Creative Writing & Essays</h2>
+        <p class="text-slate-500 mb-8 max-w-md text-sm leading-relaxed font-serif">
+            A collective space for short stories, narrative prose, and analytical essays bridging human elements and societal themes.
+        </p>
+        <a href="/creative/" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg text-sm transition shadow-lg shadow-indigo-600/20">
+            Read Creative Works &rarr;
+        </a>
+    </div>
+
+</div>
+{{ end }}
