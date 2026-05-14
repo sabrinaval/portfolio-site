@@ -1,0 +1,148 @@
+{{ define "main" }}
+
+<!-- ═══════════════════════════ HERO: SPLIT ═══════════════════════════ -->
+<section class="h-[calc(100vh-65px)] w-full flex flex-col md:flex-row overflow-hidden">
+
+    <!-- Left: Investigations -->
+    <a href="/reporting/" class="group relative w-full md:w-1/2 bg-zinc-950 dark:bg-zinc-900 flex flex-col justify-end p-8 sm:p-12 lg:p-16 overflow-hidden cursor-pointer transition-all duration-500 hover:md:w-[55%]">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_80%,#10b981,transparent_50%)]"></div>
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: repeating-linear-gradient(0deg, #fff 0, #fff 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, #fff 0, #fff 1px, transparent 1px, transparent 40px);"></div>
+        <div class="relative">
+            <span class="inline-block text-xs uppercase font-bold tracking-[0.2em] text-emerald-400 mb-4 font-['DM_Mono']">Computation & Research</span>
+            <h2 class="font-['Playfair_Display'] text-4xl lg:text-6xl font-black text-white leading-[1.05] mb-5">
+                Data &<br>Investigative<br>Journalism
+            </h2>
+            <p class="text-zinc-400 mb-8 max-w-sm text-sm leading-relaxed font-['DM_Sans']">
+                Analyzing public databases, FOIA records, and open-source data to surface systemic public insights.
+            </p>
+            <span class="inline-flex items-center gap-2 bg-emerald-500 group-hover:bg-emerald-400 text-zinc-950 font-bold px-6 py-3 rounded-sm text-sm transition-all duration-300 font-['DM_Sans']">
+                View Investigations
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </span>
+        </div>
+    </a>
+
+    <!-- Right: Creative Writing -->
+    <a href="/creative/" class="group relative w-full md:w-1/2 bg-stone-100 dark:bg-zinc-950 flex flex-col justify-end p-8 sm:p-12 lg:p-16 overflow-hidden cursor-pointer transition-all duration-500 hover:md:w-[55%] border-l border-zinc-200 dark:border-zinc-800">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_80%_20%,#6366f1,transparent_50%)]"></div>
+        <div class="relative">
+            <span class="inline-block text-xs uppercase font-bold tracking-[0.2em] text-indigo-500 dark:text-indigo-400 mb-4 font-['DM_Mono']">Narrative & Prose</span>
+            <h2 class="font-['Playfair_Display'] text-4xl lg:text-6xl font-black text-zinc-900 dark:text-zinc-50 leading-[1.05] mb-5">
+                Creative<br>Writing<br>&amp; Essays
+            </h2>
+            <p class="text-zinc-500 dark:text-zinc-400 mb-8 max-w-sm text-sm leading-relaxed font-['DM_Sans']">
+                Short stories, narrative essays, and analytical prose bridging human experience and societal structures.
+            </p>
+            <span class="inline-flex items-center gap-2 bg-indigo-600 group-hover:bg-indigo-500 text-white font-semibold px-6 py-3 rounded-sm text-sm transition-all duration-300 font-['DM_Sans']">
+                Read Creative Work
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </span>
+        </div>
+    </a>
+</section>
+
+<!-- ═══════════════════════════ MARQUEE STRIP ═══════════════════════════ -->
+<div class="w-full overflow-hidden border-y border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 py-3">
+    <div class="animate-marquee flex gap-12 whitespace-nowrap text-xs uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-600 font-['DM_Mono']">
+        <span>Data Journalism</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>Investigative Reporting</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>Creative Nonfiction</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>Python &amp; SQL</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>FOIA Requests</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>Narrative Essays</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>Short Fiction</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>Open Records</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>Data Journalism</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>Investigative Reporting</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>Creative Nonfiction</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>Python &amp; SQL</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>FOIA Requests</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>Narrative Essays</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>Short Fiction</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+        <span>Open Records</span><span class="text-zinc-200 dark:text-zinc-700">✦</span>
+    </div>
+</div>
+
+<!-- ═══════════════════════════ FEATURED INVESTIGATIONS ═══════════════════════════ -->
+<section class="max-w-6xl mx-auto px-6 py-20">
+    <div class="flex items-baseline justify-between mb-12">
+        <div>
+            <span class="text-xs uppercase tracking-[0.2em] text-emerald-500 font-['DM_Mono'] block mb-2">Latest Work</span>
+            <h2 class="font-['Playfair_Display'] text-3xl font-bold text-zinc-900 dark:text-zinc-50">Featured Investigations</h2>
+        </div>
+        <a href="/reporting/" class="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors font-['DM_Sans'] hidden sm:block">All investigations →</a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {{ range first 3 (where .Site.RegularPages "Section" "reporting") }}
+        <article class="group border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-300 p-6">
+            <span class="text-xs font-['DM_Mono'] text-zinc-400 dark:text-zinc-500 block mb-3">{{ .Date.Format "Jan 2006" }}</span>
+            <h3 class="font-['Playfair_Display'] font-bold text-lg text-zinc-900 dark:text-zinc-50 mb-3 leading-snug group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4 font-['DM_Sans']">{{ .Summary | truncate 120 }}</p>
+            {{ with .Params.tags }}
+            <div class="flex flex-wrap gap-2 mb-4">
+                {{ range first 2 . }}
+                <span class="text-xs px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 font-['DM_Mono']">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+            <a href="{{ .Permalink }}" class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 hover:underline font-['DM_Mono']">Read Report →</a>
+        </article>
+        {{ else }}
+        <article class="border border-dashed border-zinc-300 dark:border-zinc-700 p-6">
+            <span class="text-xs font-['DM_Mono'] text-zinc-300 dark:text-zinc-600 block mb-3">Coming soon</span>
+            <div class="h-4 bg-zinc-100 dark:bg-zinc-800 rounded mb-3 w-3/4"></div>
+            <div class="h-3 bg-zinc-100 dark:bg-zinc-800 rounded mb-2"></div>
+            <div class="h-3 bg-zinc-100 dark:bg-zinc-800 rounded w-2/3"></div>
+        </article>
+        {{ end }}
+    </div>
+    <a href="/reporting/" class="mt-8 sm:hidden block text-sm text-zinc-500 hover:text-zinc-900 transition-colors font-['DM_Sans']">All investigations →</a>
+</section>
+
+<!-- ═══════════════════════════ FEATURED CREATIVE ═══════════════════════════ -->
+<section class="border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+    <div class="max-w-6xl mx-auto px-6 py-20">
+        <div class="flex items-baseline justify-between mb-12">
+            <div>
+                <span class="text-xs uppercase tracking-[0.2em] text-indigo-500 font-['DM_Mono'] block mb-2">Prose & Fiction</span>
+                <h2 class="font-['Playfair_Display'] text-3xl font-bold text-zinc-900 dark:text-zinc-50">Recent Writing</h2>
+            </div>
+            <a href="/creative/" class="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors font-['DM_Sans'] hidden sm:block">All writing →</a>
+        </div>
+        <div class="space-y-px">
+            {{ range first 4 (where .Site.RegularPages "Section" "creative") }}
+            <a href="{{ .Permalink }}" class="group flex items-baseline justify-between py-5 border-b border-zinc-100 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 px-2 -mx-2 transition-colors">
+                <div class="flex items-baseline gap-4">
+                    <span class="font-['Playfair_Display'] font-bold text-zinc-900 dark:text-zinc-50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{{ .Title }}</span>
+                    {{ with .Params.genre }}<span class="text-xs font-['DM_Mono'] text-zinc-400 dark:text-zinc-500 hidden sm:inline">{{ . }}</span>{{ end }}
+                </div>
+                <span class="text-xs text-zinc-400 dark:text-zinc-600 font-['DM_Mono'] shrink-0 ml-4">{{ .Date.Format "Jan '06" }}</span>
+            </a>
+            {{ else }}
+            <div class="py-5 border-b border-zinc-100 dark:border-zinc-800 text-sm text-zinc-400 font-['DM_Sans'] italic">
+                Stories coming soon — check back shortly.
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════ BRIEF BIO STRIP ═══════════════════════════ -->
+<section class="max-w-6xl mx-auto px-6 py-20">
+    <div class="max-w-2xl">
+        <span class="text-xs uppercase tracking-[0.2em] text-zinc-400 font-['DM_Mono'] block mb-4">About</span>
+        <p class="font-['Playfair_Display'] text-2xl font-bold text-zinc-900 dark:text-zinc-50 leading-snug mb-6">
+            I'm a journalist and writer working at the intersection of data, computation, and human stories.
+        </p>
+        <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mb-6 font-['DM_Sans']">
+            Currently investigating [your current beat]. Previously at [publication]. Applying to Columbia's Dual MS in CS and Journalism.
+        </p>
+        <a href="/about/" class="inline-flex items-center gap-2 text-sm font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 px-5 py-2.5 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors font-['DM_Sans']">
+            Full bio & CV →
+        </a>
+    </div>
+</section>
+
+{{ end }}

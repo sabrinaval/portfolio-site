@@ -1,21 +1,159 @@
 {{ define "main" }}
-<div class="max-w-4xl mx-auto px-6 py-12">
-    <h1 class="text-3xl font-extrabold tracking-tight capitalize mb-8 border-b border-slate-200 pb-4">
-        {{ .Title }} Archive
-    </h1>
-    
-    <!-- Grid List of Articles -->
-    <div class="space-y-8">
+
+{{/* Detect which section we're in for theming */}}
+{{ $isReporting := eq .Section "reporting" }}
+{{ $accent := cond $isReporting "emerald" "indigo" }}
+
+<!-- ═══════════════════════════ SECTION HEADER ═══════════════════════════ -->
+<header class="border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+    <div class="max-w-6xl mx-auto px-6 py-16">
+        {{ if $isReporting }}
+        <span class="text-xs uppercase tracking-[0.2em] text-emerald-500 font-['DM_Mono'] block mb-3">Computation & Research</span>
+        <h1 class="font-['Playfair_Display'] text-5xl font-black text-zinc-900 dark:text-zinc-50 mb-4">Investigations</h1>
+        <p class="text-zinc-500 dark:text-zinc-400 max-w-lg text-sm leading-relaxed font-['DM_Sans']">
+            Data-driven reporting using Python, SQL, public records, and FOIA requests. Each piece attempts to surface something that numbers alone can't say.
+        </p>
+        {{ else }}
+        <span class="text-xs uppercase tracking-[0.2em] text-indigo-500 font-['DM_Mono'] block mb-3">Narrative & Prose</span>
+        <h1 class="font-['Playfair_Display'] text-5xl font-black text-zinc-900 dark:text-zinc-50 mb-4">Creative Writing</h1>
+        <p class="text-zinc-500 dark:text-zinc-400 max-w-lg text-sm leading-relaxed font-['DM_Sans']">
+            Short stories, essays, and prose that sit at the intersection of personal experience and larger social structures.
+        </p>
+        {{ end }}
+
+        <!-- Filter by tag (progressive enhancement) -->
+        {{ $allTags := slice }}
         {{ range .Pages }}
-        <article class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
-            <span class="text-xs text-slate-400 block mb-1">{{ .Date.Format "Jan 2, 2006" }}</span>
-            <h2 class="text-xl font-bold mb-2">
-                <a href="{{ .Permalink }}" class="text-slate-900 hover:text-indigo-600 transition">{{ .Title }}</a>
-            </h2>
-            <p class="text-slate-600 text-sm mb-4">{{ .Summary }}</p>
-            <a href="{{ .Permalink }}" class="text-sm font-semibold text-indigo-600 hover:underline">Read Article &rarr;</a>
-        </article>
+            {{ range .Params.tags }}
+                {{ $allTags = $allTags | append . }}
+            {{ end }}
+        {{ end }}
+        {{ $uniqueTags := $allTags | uniq }}
+        {{ if $uniqueTags }}
+        <div class="flex flex-wrap gap-2 mt-8">
+            <button onclick="filterTag('all')" id="tag-all" class="tag-btn active-tag text-xs px-3 py-1.5 font-['DM_Mono'] border transition-colors">All</button>
+            {{ range $uniqueTags }}
+            <button onclick="filterTag('{{ . }}')" id="tag-{{ . | urlize }}" class="tag-btn text-xs px-3 py-1.5 font-['DM_Mono'] border border-zinc-300 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400 hover:border-zinc-600 transition-colors">{{ . }}</button>
+            {{ end }}
+        </div>
         {{ end }}
     </div>
+</header>
+
+<!-- ═══════════════════════════ ARTICLE GRID ═══════════════════════════ -->
+<div class="max-w-6xl mx-auto px-6 py-12">
+
+    {{ if $isReporting }}
+    <!-- Reporting: Card grid layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="articles-grid">
+        {{ range .Pages }}
+        <article class="article-item group border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-300 flex flex-col"
+                 data-tags="{{ range .Params.tags }}{{ . }} {{ end }}">
+
+            <!-- If article has a cover image -->
+            {{ with .Params.cover }}
+            <div class="aspect-video overflow-hidden">
+                <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            {{ end }}
+
+            <div class="p-6 flex flex-col flex-1">
+                <div class="flex items-center gap-3 mb-3">
+                    <time class="text-xs font-['DM_Mono'] text-zinc-400 dark:text-zinc-500">{{ .Date.Format "Jan 2, 2006" }}</time>
+                    {{ with .Params.readingTime }}<span class="text-zinc-300 dark:text-zinc-700">·</span><span class="text-xs font-['DM_Mono'] text-zinc-400">{{ . }} min read</span>{{ end }}
+                </div>
+
+                <h2 class="font-['Playfair_Display'] font-bold text-xl text-zinc-900 dark:text-zinc-50 mb-3 leading-snug group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h2>
+
+                <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4 flex-1 font-['DM_Sans']">{{ .Summary | truncate 160 }}</p>
+
+                {{ with .Params.tags }}
+                <div class="flex flex-wrap gap-2 mb-4">
+                    {{ range . }}
+                    <span class="text-xs px-2 py-0.5 bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 font-['DM_Mono']">{{ . }}</span>
+                    {{ end }}
+                </div>
+                {{ end }}
+
+                <a href="{{ .Permalink }}" class="self-start text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 hover:underline font-['DM_Mono']">Read Report →</a>
+            </div>
+        </article>
+        {{ else }}
+        <div class="col-span-2 py-16 text-center text-zinc-400 font-['DM_Sans'] italic">
+            No investigations published yet — check back soon.
+        </div>
+        {{ end }}
+    </div>
+
+    {{ else }}
+    <!-- Creative: Editorial list layout -->
+    <div class="max-w-3xl" id="articles-grid">
+
+        <!-- Sort by genre grouping if available -->
+        {{ range .Pages }}
+        <article class="article-item group py-8 border-b border-zinc-100 dark:border-zinc-800 last:border-0"
+                 data-tags="{{ range .Params.tags }}{{ . }} {{ end }}">
+            <div class="flex flex-col sm:flex-row sm:items-start gap-4">
+                <time class="text-xs font-['DM_Mono'] text-zinc-400 dark:text-zinc-500 shrink-0 mt-1 w-20">{{ .Date.Format "Jan 2006" }}</time>
+                <div class="flex-1">
+                    {{ with .Params.genre }}
+                    <span class="text-xs uppercase tracking-wider font-['DM_Mono'] text-indigo-500 dark:text-indigo-400 block mb-1">{{ . }}</span>
+                    {{ end }}
+                    <h2 class="font-['Playfair_Display'] font-bold text-2xl text-zinc-900 dark:text-zinc-50 mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h2>
+                    <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-3 font-['DM_Sans']">{{ .Summary | truncate 180 }}</p>
+                    <a href="{{ .Permalink }}" class="text-xs font-bold uppercase tracking-wider text-indigo-500 dark:text-indigo-400 hover:underline font-['DM_Mono']">Read →</a>
+                </div>
+            </div>
+        </article>
+        {{ else }}
+        <div class="py-16 text-center text-zinc-400 font-['DM_Sans'] italic">
+            Stories and essays coming soon.
+        </div>
+        {{ end }}
+    </div>
+    {{ end }}
+
 </div>
+
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+function filterTag(tag) {
+    const items = document.querySelectorAll('.article-item');
+    const btns = document.querySelectorAll('.tag-btn');
+
+    btns.forEach(b => {
+        b.classList.remove('active-tag', 'bg-zinc-900', 'dark:bg-zinc-50', 'text-white', 'dark:text-zinc-900', 'border-zinc-900', 'dark:border-zinc-50');
+        b.classList.add('border-zinc-300', 'dark:border-zinc-700', 'text-zinc-500', 'dark:text-zinc-400');
+    });
+
+    const activeBtn = document.getElementById(tag === 'all' ? 'tag-all' : 'tag-' + tag.replace(/\s+/g, '-').toLowerCase());
+    if (activeBtn) {
+        activeBtn.classList.add('active-tag', 'bg-zinc-900', 'text-white', 'border-zinc-900');
+        activeBtn.classList.remove('border-zinc-300', 'text-zinc-500');
+    }
+
+    items.forEach(item => {
+        if (tag === 'all' || item.dataset.tags?.includes(tag)) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+// Style active tag on load
+document.addEventListener('DOMContentLoaded', () => {
+    const allBtn = document.getElementById('tag-all');
+    if (allBtn) {
+        allBtn.classList.add('bg-zinc-900', 'text-white', 'border-zinc-900');
+        allBtn.classList.remove('border-zinc-300', 'text-zinc-500');
+    }
+});
+</script>
 {{ end }}

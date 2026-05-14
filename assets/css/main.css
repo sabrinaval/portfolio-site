@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* Force dark mode class strategy */
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  /* Marquee animation for the strip */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  /* Subtle fade-up for article cards */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.5s ease forwards;
+  }
+}
