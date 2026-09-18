@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 @layer base {
-  /* Force dark mode class strategy */
+  /* Force dark mode */
   html {
     -webkit-font-smoothing: antialiased;
   }
 }
 
 @layer utilities {
-  /* Marquee animation for the strip */
+  /* Strip animation */
   @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -21,7 +21,7 @@
     width: max-content;
   }
 
-  /* Subtle fade-up for article cards */
+  /* Fade-up for article cards */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }

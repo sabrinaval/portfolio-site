@@ -41,6 +41,3 @@ skills:
   - Scraping
   - OpenRefine
 ---
-
-<!-- The about layout template reads all the above frontmatter automatically. -->
-<!-- You don't need body content here — it's all driven by the layout. -->
