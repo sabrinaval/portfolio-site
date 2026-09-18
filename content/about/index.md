@@ -11,33 +11,37 @@ investigating:
 
 # ─── Experience ─────────────────────────────────────────────────────────────
 experience:
-  - years: "2024–Present"
-    role: "Your Current Title"
-    org: "Organization / Publication"
-    note: "Optional brief note about your work here."
-  - years: "2022–2024"
-    role: "Previous Role"
-    org: "Previous Organization"
+  - years: "July 2026–Present"
+    role: "Software Engineering Co-op"
+    org: "Tines"
+  - years: "July 2025-Dec. 2025"
+    role: "Full-stack Software Engineering Co-op"
+    org: "MORSE Corp."
+  - years: "June 2022-Aug. 2022"
+    role: "Software Engineering Intern"
+    org: "CACI Internation, Inc."
 
 # ─── Education ──────────────────────────────────────────────────────────────
 education:
-  - years: "2026 (expected)"
-    degree: "Dual MS, Computer Science & Journalism"
-    school: "Columbia University (applied)"
-  - years: "2020–2024"
-    degree: "B.A. Your Major"
-    school: "Your University"
+  - years: "Sept. 2023-May 2027 (expected graduation)"
+    degree: "BS in Computer Science, minor in Criminal Justice"
+    school: "Northeastern University"
 
 # ─── Technical Skills ───────────────────────────────────────────────────────
 skills:
   - Python
+  - Ruby
+  - Java
   - SQL
   - R
+  - PyTorch
   - Pandas
-  - D3.js
+  - C++
+  - TypeScript
+  - Redis
+  - PostgreSQL
   - FOIA
   - Hugo
   - Git
-  - Scraping
-  - OpenRefine
+  - Data Scraping
 ---
